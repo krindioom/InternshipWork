@@ -18,13 +18,13 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Transform _shootingPoint;
 
-    private PlayerMovement _movement;
+    private MovementService _movement;
     private PlayerRotation _rotation;
     private PlayerShooting _shooting;
 
     private void Awake()
     {
-        _movement = new PlayerMovement(transform, _speed);
+        _movement = new MovementService(transform, _speed);
         _rotation = new PlayerRotation(transform);
         _shooting = new PlayerShooting(_shootingPoint, _bulletProjectTile);
     }

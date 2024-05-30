@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement
+public class MovementService
 {
     private readonly Transform _playerTransform;
     private readonly float _movementSpeed;
 
-    public PlayerMovement(Transform playerTransform, float movementSpeed)
+    public MovementService(Transform playerTransform, float movementSpeed)
     {
         _playerTransform = playerTransform;
         _movementSpeed = movementSpeed;
