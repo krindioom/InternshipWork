@@ -7,16 +7,23 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _speed = 0;
 
+    [Header("Camera")]
+    [SerializeField]
+    private Camera _mainCamera;
+
     private PlayerMovement _movement;
+    private PlayerRotation _rotation;
 
     private void Awake()
     {
         _movement = new PlayerMovement(transform, _speed);
+        _rotation = new PlayerRotation(transform);
     }
 
     private void Update()
     {
         Move();
+        Rotate();
     }
 
     private void Move()
@@ -41,5 +48,11 @@ public class Player : MonoBehaviour
         }
 
         _movement.Move(direction);
+    }
+
+    private void Rotate()
+    {
+        Vector3 cursourWorldPosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        _rotation.LookAt(cursourWorldPosition);
     }
 }
