@@ -348,6 +348,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 10
   _mainCamera: {fileID: 519420031}
+  _bulletProjectTile: {fileID: 2612803986415370434, guid: e125b47457d71ef4caf602be666e77c3, type: 3}
+  _shootingPoint: {fileID: 1484193835}
 --- !u!1 &1484193834
 GameObject:
   m_ObjectHideFlags: 0

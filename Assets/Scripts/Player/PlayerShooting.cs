@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShooting : MonoBehaviour
+public class PlayerShooting
 {
-    // Start is called before the first frame update
-    void Start()
+    private readonly Transform _shootingPoint;
+    private readonly BulletProjectTile _projectTile;
+
+    public PlayerShooting(Transform shootingPoint, BulletProjectTile projectTile)
     {
-        
+        _shootingPoint = shootingPoint;
+        _projectTile = projectTile;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Shoot()
     {
-        
+        var projectTileGO = Object.Instantiate(_projectTile);
+        projectTileGO.transform.position = _shootingPoint.position;
+        projectTileGO.transform.rotation = _shootingPoint.rotation;
     }
 }

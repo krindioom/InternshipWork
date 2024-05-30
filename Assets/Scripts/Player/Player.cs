@@ -11,19 +11,29 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Camera _mainCamera;
 
+    [Header("Shooting")]
+    [SerializeField]
+    private BulletProjectTile _bulletProjectTile;
+
+    [SerializeField]
+    private Transform _shootingPoint;
+
     private PlayerMovement _movement;
     private PlayerRotation _rotation;
+    private PlayerShooting _shooting;
 
     private void Awake()
     {
         _movement = new PlayerMovement(transform, _speed);
         _rotation = new PlayerRotation(transform);
+        _shooting = new PlayerShooting(_shootingPoint, _bulletProjectTile);
     }
 
     private void Update()
     {
         Move();
         Rotate();
+        Shoot();
     }
 
     private void Move()
@@ -54,5 +64,13 @@ public class Player : MonoBehaviour
     {
         Vector3 cursourWorldPosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
         _rotation.LookAt(cursourWorldPosition);
+    }
+
+    private void Shoot()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            _shooting.Shoot();
+        }
     }
 }
